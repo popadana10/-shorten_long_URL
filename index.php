@@ -15,7 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>URL Shortener</title>
 
-	<link rel="stylesheet" href="main.css" />
+	<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 	<header>
