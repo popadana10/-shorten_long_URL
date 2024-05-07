@@ -1,4 +1,12 @@
+<?php
+	include 'db.php';
 
+	$db = new Database("localhost", "url_short", "root", "root");
+	$db = $db->connect();
+
+	$stmt = $db->query("SELECT * FROM urls");
+	$urls = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +28,23 @@
 				<input type="submit" value="SHORTEN" />
 			</form>
 		</section>
-
+        <section class="urls">
+			<?php foreach ($urls as $url) : ?>
+			<div class="url">
+				<div class="id">
+					<?= $url['ID']; ?>
+				</div>
+				<div class="short_url">
+					<a href="http://localhost/r?c=<?= $url['ID']; ?>" target="_blank">
+						http://localhost/r?c=<?= $url['ID']; ?>
+					</a>
+				</div>
+				<div class="long_url">
+					<a href="<?= $url['long_url']; ?>" target="_blank"><?= $url['long_url']; ?></a>
+				</div>
+			</div>
+			<?php endforeach; ?>
+		</section>
 		
 	</main>
 </body>
